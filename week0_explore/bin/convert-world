@@ -15,11 +15,30 @@ cd "$PARSER_DIR"
 
 for type in mob obj shp wld zon trg qst; do
     mkdir -p "$DEST/$type"
+
+    # USE WHEN RUNNING AT HOME
     for file in $(find "$SRC/$type" -name "*.$type"); do
         number=$(basename "$file" ".$type")
         echo "parsing $file -> $DEST/$type/$number.json"
         uv run circlemud-parse --dest "$DEST/$type/$number.json" "$file"
     done
+
+    # USE WHEN RUNNING ON WORK COMPUTER
+    # for type in mob obj shp wld zon trg qst; do
+    #     mkdir -p "$DEST/$type"
+
+    #     while IFS= read -r -d '' file; do
+    #         number=$(basename "$file" ".$type")
+    #         destination="$DEST/$type/$number.json"
+
+    #         echo "parsing $file -> $destination"
+
+    #         uv.exe run circlemud-parse \
+    #             --dest "$(wslpath -w "$destination")" \
+    #             "$(wslpath -w "$file")"
+    #     done < <(find "$SRC/$type" -type f -name "*.$type" -print0)
+    # done
+
 done
 
 echo "Done. JSON written to $DEST"
