@@ -1,0 +1,4 @@
+interface:
+  display_name: "MUD Play"
+  short_description: "Play the local MUD with persistent goal memory"
+  default_prompt: "Use $mud-play to pursue my MUD goal, read data/player.md and data/world.md first, run commands through scripts/mud_client.py, and persist verified progress and discoveries."
