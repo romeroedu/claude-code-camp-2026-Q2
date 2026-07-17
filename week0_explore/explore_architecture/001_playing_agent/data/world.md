@@ -7,3 +7,4 @@
   - Danish pastry: 7 coins
   - Bread: 14 coins
   - Waybread: 72 coins
+- Live confirmation: from Main Street, go `north` to reach The Bakery.
