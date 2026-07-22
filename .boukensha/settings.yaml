@@ -1,0 +1,11 @@
+tasks:
+  player:
+    provider: openai        # provider name (string)
+    model: gpt-5.6-luna
+    prompt_override:
+      system: true
+mud:
+  host: localhost
+  port: 4000
+  username: dummy
+  password: helloworld
