@@ -12,24 +12,41 @@ Package BOUKENSHA as a gem so the `boukensha` command works from anywhere on you
 ## Install
 
 ```bash
-cd 08_global_executable
+cd 09_global_executable
 gem build boukensha.gemspec
-gem install boukensha-0.1.0.gem
+gem install boukensha-0.9.0.gem
 ```
 
 After that, `boukensha` is on your `$PATH` and works from any directory.
 
-## Switching steps with BOUKENSHA_PATH
+## Switching steps and config with BOUKENSHA_PATH
 
-The loader resolves in this order:
+The loader resolves the code path in this order:
 
 | Priority | Source | Example |
 |----------|--------|---------|
 | 1 | `BOUKENSHA_PATH` env var | `BOUKENSHA_PATH=~/Sites/boukensha/07_the_repl_loop boukensha` |
-| 2 | `~/.boukensharc` file | `echo ~/Sites/boukensha/07_the_repl_loop > ~/.boukensharc` |
+| 2 | `~/.boukensharc` `boukensha_path` | `boukensha_path: ~/Sites/boukensha/07_the_repl_loop` |
 | 3 | Bundled default | just run `boukensha` |
 
 `BOUKENSHA_PATH` must point to a step folder that contains `lib/boukensha.rb`.
+
+The config directory resolves separately:
+
+| Priority | Source | Example |
+|----------|--------|---------|
+| 1 | `BOUKENSHA_DIR` env var | `BOUKENSHA_DIR=~/projects/mybot/.boukensha boukensha` |
+| 2 | `~/.boukensharc` `boukensha_dir` | `boukensha_dir: ~/projects/mybot/.boukensha` |
+| 3 | Default | `~/.boukensha` |
+
+`~/.boukensharc` is YAML:
+
+```yaml
+boukensha_path: ~/Sites/boukensha/09_global_executable
+boukensha_dir: ~/.boukensha
+```
+
+For compatibility, a `~/.boukensharc` file containing only a path is still treated as `boukensha_path`.
 
 ## Running a specific step
 

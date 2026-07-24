@@ -13,12 +13,13 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 3.0"
 
-  # All files tracked in git, plus the bin/ executable.
-  spec.files = Dir["lib/**/*.rb"] + ["bin/boukensha"]
+  # Runtime files bundled in the gem, plus the bin/ executable.
+  spec.files = Dir["lib/**/*.rb"] + Dir["prompts/**/*.md"] + ["bin/boukensha"]
 
   spec.bindir      = "bin"
   spec.executables = ["boukensha"]
 
-  # The gem ships no external dependencies — net/http and json are stdlib.
-  # Users supply their own ANTHROPIC_API_KEY.
+  spec.add_dependency "dotenv", "~> 3.2"
+
+  # Users supply their own provider API keys.
 end
