@@ -1,7 +1,7 @@
 tasks:
   player:
     provider: openai        # provider name (string)
-    model: gpt-5.6-luna
+    model: gpt-5.5
     prompt_override:
       system: true
 mud:
