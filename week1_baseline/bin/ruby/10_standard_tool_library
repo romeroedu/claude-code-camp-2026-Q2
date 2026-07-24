@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if ! nc -z localhost 4000 >/dev/null 2>&1; then
+  cat >&2 <<'EOF'
+CircleMUD is not reachable at localhost:4000.
+
+Start it with:
+  cd ../../../week0_explore/infrastructure
+  docker compose up --build -d
+
+Then rerun ./10_standard_tool_library.
+EOF
+  exit 1
+fi
+
+cd "$(dirname "$0")/../../ruby/10_standard_tool_library"
+RUBYOPT="${RUBYOPT:+$RUBYOPT }-W0" bundle exec ruby examples/example.rb

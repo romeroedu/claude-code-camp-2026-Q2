@@ -13,14 +13,14 @@
 #   ruby examples/demo.rb
 #   BOUKENSHA_DIR=iterations/.boukensha ruby examples/demo.rb
 
-ENV["BOUKENSHA_DIR"] ||= File.expand_path("../../../.boukensha", __dir__)
+ENV["BOUKENSHA_DIR"] ||= File.expand_path("../../../../.boukensha", __dir__)
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "boukensha"
 
 cfg = Boukensha.config
 puts "Config: #{cfg}"
-puts "API key set? #{!ENV['ANTHROPIC_API_KEY'].nil?}"
+puts "API key set? #{!ENV['OPENAI_API_KEY'].nil?}"
 puts
 
 Boukensha.run(
